@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
   const [view, setView] = useState("experience");
@@ -38,11 +39,36 @@ export default function Home() {
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
         <h1 className="text-2xl font-bold mb-2">JaeMin Birdsall</h1>
         <p className="text-center mb-4">Computer Science Dropout</p>
+        {/* Icons Div */}
         <div className="flex space-x-4">
-          <span className="w-6 h-6 bg-[#575A5E] rounded-full"></span>
-          <span className="w-6 h-6 bg-[#575A5E] rounded-full"></span>
-          <span className="w-6 h-6 bg-[#575A5E] rounded-full"></span>
+          {/* Twitter Icon */}
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <FaTwitter className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
+          </a>
+
+          {/* GitHub Icon */}
+          <a href="https://github.com/JaeMinBird" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FaGithub className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
+          </a>
+
+          {/* LinkedIn Icon */}
+          <a href="https://www.linkedin.com/in/JaeMinBirdsall/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
+          </a>
         </div>
+        {/* View Resume Div */}
+        <a
+          href="https://drive.google.com/file/d/1X_NxZ6edctZC7sPmI9y-HS4vbx-Q3Oeg/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative group w-fit mt-3"
+        >
+          {/* The Text */}
+          <span className="text-md">View Resume</span>
+
+          {/* Sliding Bar Animation */}
+          <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#F4F7F5] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+        </a>
       </div>
 
       {/* Right Side - Experience/Projects Section */}
