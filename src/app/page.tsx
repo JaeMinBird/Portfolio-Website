@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   const [view, setView] = useState("experience");
@@ -14,7 +14,8 @@ export default function Home() {
 
   // Update the bar position and width by active button
   useEffect(() => {
-    const activeButtonRef = activeButton === "experience" ? ExpButRef : ProjButRef;
+    const activeButtonRef =
+      activeButton === "experience" ? ExpButRef : ProjButRef;
     const barElement = barRef.current;
 
     if (activeButtonRef.current && barElement) {
@@ -41,32 +42,38 @@ export default function Home() {
         <p className="text-center mb-4">Computer Science Dropout</p>
         {/* Icons Div */}
         <div className="flex space-x-4">
-          {/* Twitter Icon */}
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+          >
             <FaTwitter className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
           </a>
-
-          {/* GitHub Icon */}
-          <a href="https://github.com/JaeMinBird" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a
+            href="https://github.com/JaeMinBird"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
             <FaGithub className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
           </a>
-
-          {/* LinkedIn Icon */}
-          <a href="https://www.linkedin.com/in/JaeMinBirdsall/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/JaeMinBirdsall/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
             <FaLinkedin className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
           </a>
         </div>
-        {/* View Resume Div */}
         <a
           href="https://drive.google.com/file/d/1X_NxZ6edctZC7sPmI9y-HS4vbx-Q3Oeg/view"
           target="_blank"
           rel="noopener noreferrer"
           className="relative group w-fit mt-3"
         >
-          {/* The Text */}
           <span className="text-md">View Resume</span>
-
-          {/* Sliding Bar Animation */}
           <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#F4F7F5] transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </a>
       </div>
@@ -79,7 +86,7 @@ export default function Home() {
           <div
             ref={barRef}
             className="absolute bottom-0 h-1 rounded bg-[#08090A] transition-all duration-300"
-            style={{ width: "0px", left: "0px" }} // Initial width and position
+            style={{ width: "0px", left: "0px" }}
           ></div>
 
           <button
@@ -102,20 +109,95 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Content Section with CSS-Based Transitions */}
-        <div
-          className={`transition-all duration-500 ease-in-out ${
-            view === "experience" ? "opacity-100 translate-y-0" : "opacity-100 translate-x-0"
-          } ${view === "projects" ? "text-right" : "text-left"}`}
-        >
+        {/* Content Section */}
+        <div>
           {view === "experience" ? (
             <div>
-              <h2 className="text-xl font-semibold mb-4">Professional Experience</h2>
-              <ul className="space-y-2">
-                <li>Job Title 1 - Company Name</li>
-                <li>Job Title 2 - Company Name</li>
-                <li>Job Title 3 - Company Name</li>
-              </ul>
+              <h2 className="text-xl font-semibold mb-4">
+                Professional Experience
+              </h2>
+
+              {/* Experience Entry */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                {/* Date Line */}
+                <div className="relative flex flex-col items-center">
+                  <span className="text-lg font-semibold">Dec 2022</span>
+                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
+                  <span className="text-lg">Jan 2020</span>
+                </div>
+
+                {/* Experience Details */}
+                <div className="w-full">
+                  {/* Company and Position */}
+                  <div>
+                    <span className="text-xl font-bold">Tech Corp</span>
+                    <span className="block text-lg text-gray-600">
+                      Web Developer
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-gray-700 mt-2 text-sm">
+                    Developed and maintained web applications, focusing on React
+                    and Node.js for dynamic interfaces and backend APIs.
+                  </div>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {["React", "Node.js", "MongoDB", "JavaScript", "CSS", "HTML"].map(
+                      (skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 text-sm font-medium bg-gray-200 rounded-md"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Repeat for Another Experience Entry */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                {/* Date Line */}
+                <div className="relative flex flex-col items-center">
+                  <span className="text-lg font-semibold">Dec 2019</span>
+                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
+                  <span className="text-lg">Feb 2018</span>
+                </div>
+
+                {/* Experience Details */}
+                <div className="w-full">
+                  {/* Company and Position */}
+                  <div>
+                    <span className="text-xl font-bold">Design Inc.</span>
+                    <span className="block text-lg text-gray-600">
+                      Frontend Developer
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-gray-700 mt-2 text-sm">
+                    Created engaging and user-friendly interfaces using modern
+                    JavaScript frameworks and libraries.
+                  </div>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {["Vue.js", "SCSS", "TypeScript", "Webpack"].map(
+                      (skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 text-sm font-medium bg-gray-200 rounded-md"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
             <div>
