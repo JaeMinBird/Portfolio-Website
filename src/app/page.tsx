@@ -173,7 +173,7 @@ export default function Home() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative group block w-full no-underline"
+                className="relative group inline-block w-fit"
               >
                 <div className="flex sm:flex-row flex-col items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                   <div className="relative flex flex-col items-center text-center">
