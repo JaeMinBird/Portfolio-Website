@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
+import { experiences } from "../app/data/experience"; // Import the data
 
 export default function Home() {
   const [view, setView] = useState("experience");
@@ -36,13 +37,13 @@ export default function Home() {
   return (
     <div
       className="md:grid md:grid-cols-2 h-screen flex flex-col"
-      style={{ fontFamily: "Georgia, serif" }} // Change font to Georgia
+      style={{ fontFamily: "Palatino, serif" }} // Use Palatino as the default font
     >
       {/* Profile Section */}
       <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center">
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
-        <h1 className="text-2xl font-bold mb-2">JaeMin Birdsall</h1>
-        <p className="text-center mb-4">Computer Science Dropout</p>
+        <h1 className="text-3xl font-bold mb-2">JaeMin Birdsall</h1> {/* 1.5x larger */}
+        <p className="text-lg text-center mb-4">Computer Science Dropout</p> {/* 1.5x larger */}
         {/* Icons Div */}
         <div className="flex space-x-4">
           <a
@@ -75,6 +76,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           className="relative group w-fit mt-3"
+          style={{ fontFamily: "Georgia, serif" }} // Apply Georgia font
         >
           <span className="text-md">View Resume</span>
           <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#F4F7F5] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -116,87 +118,53 @@ export default function Home() {
         <div>
           {view === "experience" ? (
             <div>
-              {/* Experience Entry */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-                {/* Date Line */}
-                <div className="relative flex flex-col items-center">
-                  <span className="text-lg font-semibold">Dec 2022</span>
-                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
-                  <span className="text-lg">Jan 2020</span>
-                </div>
-
-                {/* Experience Details */}
-                <div className="w-full">
-                  {/* Company and Position */}
-                  <div>
-                    <span className="text-xl font-bold">Tech Corp</span>
-                    <span className="block text-lg text-gray-600">
-                      Web Developer
-                    </span>
+              {experiences.map((exp, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6"
+                >
+                  {/* Date Line */}
+                  <div className="relative flex flex-col items-center text-center">
+                    <span className="text-lg">{exp.endDate.month}</span>
+                    <span className="text-lg">{exp.endDate.year}</span>
+                    <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
+                    <span className="text-lg">{exp.startDate.month}</span>
+                    <span className="text-lg">{exp.startDate.year}</span>
                   </div>
 
-                  {/* Description */}
-                  <div className="text-gray-700 mt-2 text-sm">
-                    Developed and maintained web applications, focusing on React
-                    and Node.js for dynamic interfaces and backend APIs.
-                  </div>
+                  {/* Experience Details */}
+                  <div className="w-full">
+                    {/* Company and Position */}
+                    <div>
+                      <span className="text-xl font-bold">{exp.company}</span>
+                      <span className="block text-lg text-gray-600">
+                        {exp.position}
+                      </span>
+                    </div>
 
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {["React", "Node.js", "MongoDB", "JavaScript", "CSS", "HTML"].map(
-                      (skill, index) => (
+                    {/* Description */}
+                    <div
+                      className="text-gray-700 mt-2 text-sm"
+                      style={{ fontFamily: "Georgia, serif" }}
+                    >
+                      {exp.description}
+                    </div>
+
+                    {/* Skills */}
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {exp.skills.map((skill, idx) => (
                         <span
-                          key={index}
+                          key={idx}
                           className="px-3 py-1 text-sm font-medium border border-gray-400"
+                          style={{ fontFamily: "Georgia, serif" }}
                         >
                           {skill}
                         </span>
-                      )
-                    )}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Repeat for Another Experience Entry */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-                {/* Date Line */}
-                <div className="relative flex flex-col items-center">
-                  <span className="text-lg font-semibold">Dec 2019</span>
-                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
-                  <span className="text-lg">Feb 2018</span>
-                </div>
-
-                {/* Experience Details */}
-                <div className="w-full">
-                  {/* Company and Position */}
-                  <div>
-                    <span className="text-xl font-bold">Design Inc.</span>
-                    <span className="block text-lg text-gray-600">
-                      Frontend Developer
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <div className="text-gray-700 mt-2 text-sm">
-                    Created engaging and user-friendly interfaces using modern
-                    JavaScript frameworks and libraries.
-                  </div>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {["Vue.js", "SCSS", "TypeScript", "Webpack"].map(
-                      (skill, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 text-sm font-medium border border-gray-400"
-                        >
-                          {skill}
-                        </span>
-                      )
-                    )}
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           ) : (
             <div>
