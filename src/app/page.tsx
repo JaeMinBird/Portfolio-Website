@@ -89,14 +89,14 @@ export default function Home() {
         <div className="relative flex justify-center space-x-6 mb-6">
           <div
             ref={barRef}
-            className="absolute bottom-0 h-1 rounded bg-[#08090A] transition-all duration-300"
+            className="absolute bottom-0 h-[2px] rounded bg-[#08090A] transition-all duration-300"
             style={{ width: "0px", left: "0px" }}
           ></div>
 
           <button
             ref={ExpButRef}
             onClick={() => handleButtonClick("experience", "experience")}
-            className={`px-4 py-2 ${
+            className={`px-4 py-2 text-2xl ${
               view === "experience" ? "font-bold" : "text-[#575A5E]"
             }`}
           >
@@ -105,7 +105,7 @@ export default function Home() {
           <button
             ref={ProjButRef}
             onClick={() => handleButtonClick("projects", "projects")}
-            className={`px-4 py-2 ${
+            className={`px-4 py-2 text-2xl ${
               view === "projects" ? "font-bold" : "text-[#575A5E]"
             }`}
           >
@@ -115,8 +115,10 @@ export default function Home() {
 
         {/* Content Section */}
         <div
-          className={`transition-opacity duration-500 ${
-            view === "experience" ? "opacity-100 translate-y-0" : "opacity-0"
+          className={`transition-all duration-500 transform ${
+            view === "experience"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4"
           }`}
         >
           {view === "experience" &&
@@ -158,8 +160,10 @@ export default function Home() {
         </div>
 
         <div
-          className={`transition-opacity duration-500 ${
-            view === "projects" ? "opacity-100 translate-y-0" : "opacity-0"
+          className={`transition-all duration-500 transform ${
+            view === "projects"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4"
           }`}
         >
           {view === "projects" &&
@@ -186,14 +190,16 @@ export default function Home() {
                     <div className="absolute inset-0 border border-[#08090A] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
                     {/* Project Title */}
                     <div className="relative group">
-                      <span className="block text-xl font-bold inline-block relative">
+                      <span className="text-xl font-bold inline-block relative">
                         {project.title}
                         {/* Underline */}
                         <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#08090A] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                       </span>
                     </div>
                     {/* Project Description */}
-                    <div className="text-gray-700 mt-2 text-sm">{project.description}</div>
+                    <div className="text-gray-700 mt-2 text-sm">
+                      {project.description}
+                    </div>
                     {/* Skills */}
                     <div className="flex flex-wrap gap-2 mt-4">
                       {project.skills.map((skill, idx) => (
@@ -210,6 +216,7 @@ export default function Home() {
               </a>
             ))}
         </div>
+
       </div>
     </div>
   );
