@@ -37,11 +37,11 @@ export default function Home() {
 
   return (
     <div
-      className="md:grid md:grid-cols-2 h-screen flex flex-col"
+      className="md:grid md:grid-cols-2 h-screen"
       style={{ fontFamily: "Palatino, serif" }}
     >
       {/* Profile Section */}
-      <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center">
+      <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center overflow-y-auto">
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
         <h1 className="text-3xl font-bold mb-2">JaeMin Birdsall</h1>
         <p className="text-lg text-center mb-4">Computer Science Dropout</p>
@@ -82,9 +82,9 @@ export default function Home() {
           <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#F4F7F5] transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </a>
       </div>
-
+  
       {/* Right Side - Experience/Projects Section */}
-      <div className="bg-[#F4F7F5] text-[#08090A] p-6">
+      <div className="bg-[#F4F7F5] text-[#08090A] p-6 overflow-y-auto">
         {/* Menu for Switching between Experience and Projects */}
         <div className="relative flex justify-center space-x-6 mb-6">
           <div
@@ -92,7 +92,7 @@ export default function Home() {
             className="absolute bottom-0 h-[2px] rounded bg-[#08090A] transition-all duration-300"
             style={{ width: "0px", left: "0px" }}
           ></div>
-
+  
           <button
             ref={ExpButRef}
             onClick={() => handleButtonClick("experience", "experience")}
@@ -112,7 +112,7 @@ export default function Home() {
             Projects
           </button>
         </div>
-
+  
         {/* Content Section */}
         <div
           className={`transition-all duration-500 transform ${
@@ -158,7 +158,7 @@ export default function Home() {
               </div>
             ))}
         </div>
-
+  
         <div
           className={`transition-all duration-500 transform ${
             view === "projects"
@@ -176,7 +176,6 @@ export default function Home() {
                 className="relative group block w-full no-underline"
               >
                 <div className="flex sm:flex-row flex-col items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-                  {/* Date Section */}
                   <div className="relative flex flex-col items-center text-center">
                     <span className="text-lg">{project.endDate.month}</span>
                     <span className="text-lg">{project.endDate.year}</span>
@@ -184,23 +183,17 @@ export default function Home() {
                     <span className="text-lg">{project.startDate.month}</span>
                     <span className="text-lg">{project.startDate.year}</span>
                   </div>
-                  {/* Project Information Section */}
                   <div className="relative w-full p-4 group-hover:scale-105 transition-transform duration-300">
-                    {/* Rectangle Outline */}
                     <div className="absolute inset-0 border border-[#08090A] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
-                    {/* Project Title */}
                     <div className="relative group">
                       <span className="text-xl font-bold inline-block relative">
                         {project.title}
-                        {/* Underline */}
                         <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#08090A] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                       </span>
                     </div>
-                    {/* Project Description */}
                     <div className="text-gray-700 mt-2 text-sm">
                       {project.description}
                     </div>
-                    {/* Skills */}
                     <div className="flex flex-wrap gap-2 mt-4">
                       {project.skills.map((skill, idx) => (
                         <span
@@ -216,8 +209,8 @@ export default function Home() {
               </a>
             ))}
         </div>
-
       </div>
     </div>
   );
+  
 }
