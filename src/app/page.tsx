@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
-import { experiences } from "../app/data/experience"; // Import the data
+import { experiences } from "../app/data/experience";
+import { projects } from "../app/data/projects";
 
 export default function Home() {
   const [view, setView] = useState("experience");
@@ -30,21 +31,20 @@ export default function Home() {
 
   // Handler to update both the active button and view
   const handleButtonClick = (button: string, newView: string) => {
-    setActiveButton(button); // Set the active button for the animated bar
-    setView(newView); // Set the new view
+    setActiveButton(button);
+    setView(newView);
   };
 
   return (
     <div
       className="md:grid md:grid-cols-2 h-screen flex flex-col"
-      style={{ fontFamily: "Palatino, serif" }} // Use Palatino as the default font
+      style={{ fontFamily: "Palatino, serif" }}
     >
       {/* Profile Section */}
       <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center">
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
-        <h1 className="text-3xl font-bold mb-2">JaeMin Birdsall</h1> {/* 1.5x larger */}
-        <p className="text-lg text-center mb-4">Computer Science Dropout</p> {/* 1.5x larger */}
-        {/* Icons Div */}
+        <h1 className="text-3xl font-bold mb-2">JaeMin Birdsall</h1>
+        <p className="text-lg text-center mb-4">Computer Science Dropout</p>
         <div className="flex space-x-4">
           <a
             href="https://twitter.com"
@@ -76,7 +76,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           className="relative group w-fit mt-3"
-          style={{ fontFamily: "Georgia, serif" }} // Apply Georgia font
+          style={{ fontFamily: "Georgia, serif" }}
         >
           <span className="text-md">View Resume</span>
           <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#F4F7F5] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -87,7 +87,6 @@ export default function Home() {
       <div className="bg-[#F4F7F5] text-[#08090A] p-6">
         {/* Menu for Switching between Experience and Projects */}
         <div className="relative flex justify-center space-x-6 mb-6">
-          {/* Animated Bar */}
           <div
             ref={barRef}
             className="absolute bottom-0 h-1 rounded bg-[#08090A] transition-all duration-300"
@@ -115,48 +114,92 @@ export default function Home() {
         </div>
 
         {/* Content Section */}
-        <div>
-          {view === "experience" ? (
-            <div>
-              {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6"
-                >
-                  {/* Date Line */}
-                  <div className="relative flex flex-col items-center text-center">
-                    <span className="text-lg">{exp.endDate.month}</span>
-                    <span className="text-lg">{exp.endDate.year}</span>
-                    <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
-                    <span className="text-lg">{exp.startDate.month}</span>
-                    <span className="text-lg">{exp.startDate.year}</span>
+        <div
+          className={`transition-opacity duration-500 ${
+            view === "experience" ? "opacity-100 translate-y-0" : "opacity-0"
+          }`}
+        >
+          {view === "experience" &&
+            experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6"
+              >
+                <div className="relative flex flex-col items-center text-center">
+                  <span className="text-lg">{exp.endDate.month}</span>
+                  <span className="text-lg">{exp.endDate.year}</span>
+                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
+                  <span className="text-lg">{exp.startDate.month}</span>
+                  <span className="text-lg">{exp.startDate.year}</span>
+                </div>
+                <div className="w-full">
+                  <div>
+                    <span className="text-xl font-bold">{exp.company}</span>
+                    <span className="block text-lg text-gray-600">
+                      {exp.position}
+                    </span>
                   </div>
+                  <div className="text-gray-700 mt-2 text-sm">
+                    {exp.description}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {exp.skills.map((skill, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 text-sm font-medium border border-gray-400"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
 
-                  {/* Experience Details */}
-                  <div className="w-full">
-                    {/* Company and Position */}
-                    <div>
-                      <span className="text-xl font-bold">{exp.company}</span>
-                      <span className="block text-lg text-gray-600">
-                        {exp.position}
+        <div
+          className={`transition-opacity duration-500 ${
+            view === "projects" ? "opacity-100 translate-y-0" : "opacity-0"
+          }`}
+        >
+          {view === "projects" &&
+            projects.map((project, index) => (
+              <a
+                key={index}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group block w-full no-underline"
+              >
+                <div className="flex sm:flex-row flex-col items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                  {/* Date Section */}
+                  <div className="relative flex flex-col items-center text-center">
+                    <span className="text-lg">{project.endDate.month}</span>
+                    <span className="text-lg">{project.endDate.year}</span>
+                    <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
+                    <span className="text-lg">{project.startDate.month}</span>
+                    <span className="text-lg">{project.startDate.year}</span>
+                  </div>
+                  {/* Project Information Section */}
+                  <div className="relative w-full p-4 group-hover:scale-105 transition-transform duration-300">
+                    {/* Rectangle Outline */}
+                    <div className="absolute inset-0 border border-[#08090A] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
+                    {/* Project Title */}
+                    <div className="relative group">
+                      <span className="block text-xl font-bold inline-block relative">
+                        {project.title}
+                        {/* Underline */}
+                        <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#08090A] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                       </span>
                     </div>
-
-                    {/* Description */}
-                    <div
-                      className="text-gray-700 mt-2 text-sm"
-                      style={{ fontFamily: "Georgia, serif" }}
-                    >
-                      {exp.description}
-                    </div>
-
+                    {/* Project Description */}
+                    <div className="text-gray-700 mt-2 text-sm">{project.description}</div>
                     {/* Skills */}
                     <div className="flex flex-wrap gap-2 mt-4">
-                      {exp.skills.map((skill, idx) => (
+                      {project.skills.map((skill, idx) => (
                         <span
                           key={idx}
                           className="px-3 py-1 text-sm font-medium border border-gray-400"
-                          style={{ fontFamily: "Georgia, serif" }}
                         >
                           {skill}
                         </span>
@@ -164,18 +207,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Projects</h2>
-              <ul className="space-y-2">
-                <li>Project 1 - Description of Project 1</li>
-                <li>Project 2 - Description of Project 2</li>
-                <li>Project 3 - Description of Project 3</li>
-              </ul>
-            </div>
-          )}
+              </a>
+            ))}
         </div>
       </div>
     </div>
