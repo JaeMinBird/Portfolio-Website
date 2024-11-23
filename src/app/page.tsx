@@ -34,7 +34,10 @@ export default function Home() {
   };
 
   return (
-    <div className="md:grid md:grid-cols-2 h-screen flex flex-col">
+    <div
+      className="md:grid md:grid-cols-2 h-screen flex flex-col"
+      style={{ fontFamily: "Georgia, serif" }} // Change font to Georgia
+    >
       {/* Profile Section */}
       <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center">
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
@@ -113,10 +116,6 @@ export default function Home() {
         <div>
           {view === "experience" ? (
             <div>
-              <h2 className="text-xl font-semibold mb-4">
-                Professional Experience
-              </h2>
-
               {/* Experience Entry */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                 {/* Date Line */}
@@ -148,7 +147,7 @@ export default function Home() {
                       (skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 text-sm font-medium bg-gray-200 rounded-md"
+                          className="px-3 py-1 text-sm font-medium border border-gray-400"
                         >
                           {skill}
                         </span>
@@ -189,7 +188,7 @@ export default function Home() {
                       (skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 text-sm font-medium bg-gray-200 rounded-md"
+                          className="px-3 py-1 text-sm font-medium border border-gray-400"
                         >
                           {skill}
                         </span>
