@@ -113,7 +113,7 @@ export default function Home() {
           </button>
         </div>
   
-        {/* Content Section */}
+        {/* Experience Section */}
         <div
           className={`transition-all duration-500 transform ${
             view === "experience"
@@ -123,42 +123,53 @@ export default function Home() {
         >
           {view === "experience" &&
             experiences.map((exp, index) => (
-              <div
+              <a
                 key={index}
-                className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6"
+                className="relative group inline-block w-fit"
               >
-                <div className="relative flex flex-col items-center text-center">
-                  <span className="text-lg">{exp.endDate.month}</span>
-                  <span className="text-lg">{exp.endDate.year}</span>
-                  <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
-                  <span className="text-lg">{exp.startDate.month}</span>
-                  <span className="text-lg">{exp.startDate.year}</span>
+                <div
+                  className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6"
+                >
+                  {/* Timeline Structure */}
+                  <div className="timeline-container">
+                    <div className="timeline-dates">
+                      <span className="timeline-date">{exp.endDate.month}</span>
+                      <span className="timeline-date">{exp.endDate.year}</span>
+                      <div className="timeline-line"></div>
+                      <span className="timeline-date">{exp.startDate.month}</span>
+                      <span className="timeline-date">{exp.startDate.year}</span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="content flex-1 w-full p-4">
+                    <div>
+                      <span className="text-xl font-bold">{exp.company}</span>
+                      <span className="block text-lg text-gray-600">{exp.position}</span>
+                    </div>
+                    <div className="text-gray-700 mt-2 text-sm">
+                      {exp.description}
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {exp.skills.map((skill, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 text-sm font-medium border border-gray-400"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="w-full">
-                  <div>
-                    <span className="text-xl font-bold">{exp.company}</span>
-                    <span className="block text-lg text-gray-600">
-                      {exp.position}
-                    </span>
-                  </div>
-                  <div className="text-gray-700 mt-2 text-sm">
-                    {exp.description}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {exp.skills.map((skill, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-sm font-medium border border-gray-400"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              </a>
             ))}
         </div>
-  
+
+
+
+        
+        {/* Projects Section */}
         <div
           className={`transition-all duration-500 transform ${
             view === "projects"
@@ -175,17 +186,22 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="relative group inline-block w-fit"
               >
-                <div className="flex sm:flex-row flex-col items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-                  <div className="relative flex flex-col items-center text-center">
-                    <span className="text-lg">{project.endDate.month}</span>
-                    <span className="text-lg">{project.endDate.year}</span>
-                    <div className="w-0.5 h-12 bg-gray-400 my-2"></div>
-                    <span className="text-lg">{project.startDate.month}</span>
-                    <span className="text-lg">{project.startDate.year}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                  {/* Timeline Structure */}
+                  <div className="timeline-container">
+                    <div className="timeline-dates">
+                      <span className="timeline-date">{project.endDate.month}</span>
+                      <span className="timeline-date">{project.endDate.year}</span>
+                      <div className="timeline-line"></div>
+                      <span className="timeline-date">{project.startDate.month}</span>
+                      <span className="timeline-date">{project.startDate.year}</span>
+                    </div>
                   </div>
+
+                  {/* Content */}
                   <div className="relative w-full p-4 group-hover:scale-105 transition-transform duration-300">
                     <div className="absolute inset-0 border border-[#08090A] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
-                    <div className="relative group">
+                    <div className="relative">
                       <span className="text-xl font-bold inline-block relative">
                         {project.title}
                         <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#08090A] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -209,6 +225,9 @@ export default function Home() {
               </a>
             ))}
         </div>
+
+
+      {/* Div Separation for Clarity*/}
       </div>
     </div>
   );

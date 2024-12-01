@@ -19,3 +19,72 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* globals.css */
+
+/* Timeline container styles */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .timeline-container {
+    align-items: center; /* Align left for larger screens */
+    justify-content: center;
+  }
+}
+
+/* Timeline date and connector styles */
+.timeline-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-date {
+  font-size: 1rem; /* Tailwind: text-lg */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0; /* Remove extra margin */
+  position: relative;
+  text-align: center;
+}
+
+.timeline-line {
+  width: 2px; /* Tailwind: w-0.5 */
+  height: 3rem; /* Tailwind: h-12 */
+  background-color: #9ca3af; /* Tailwind: bg-gray-400 */
+  margin: 0.5rem 0; /* Tailwind: my-2 */
+}
+
+@media (max-width: 639px) {
+  .timeline-dates {
+    flex-direction: row-reverse; /* Switch start and end dates */
+    justify-content: space-between;
+    align-items: center;
+    width: 70%; /* Full-width container */
+  }
+
+  .timeline-date {
+    flex: 1; /* Equal spacing for dates */
+    display: flex;
+    flex-direction: row; /* Make month and year inline */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timeline-date span {
+    display: inline-block;
+    padding: 10%;
+  }
+
+  .timeline-line {
+    height: 2px; /* Horizontal line */
+    width: 20%; /* Full width */
+    margin: 0 1rem; /* Add spacing for the line */
+  }
+}

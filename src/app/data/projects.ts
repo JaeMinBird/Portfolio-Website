@@ -1,28 +1,19 @@
 // data/projectData.ts
 export const projects = [
-    {
-      title: "Project 1",
-      description: "Description of Project 1 goes here.",
-      startDate: { month: "Jan", year: "2021" },
-      endDate: { month: "Dec", year: "2021" },
-      skills: ["React", "TypeScript", "CSS", "Firebase"],
-      link: "https://google.com", // Replace with actual project links
-    },
-    {
-      title: "Project 2",
-      description: "Description of Project 2 goes here.",
-      startDate: { month: "Mar", year: "2020" },
-      endDate: { month: "Jun", year: "2020" },
-      skills: ["Node.js", "MongoDB", "Express", "JavaScript"],
-      link: "https://google.com",
-    },
-    {
-      title: "Project 3",
-      description: "Description of Project 3 goes here.",
-      startDate: { month: "Sep", year: "2019" },
-      endDate: { month: "Nov", year: "2019" },
-      skills: ["Python", "Django", "PostgreSQL"],
-      link: "https://google.com",
-    },
-  ];
-  
+  {
+    title: "Virtual Disk System",
+    description: "Description of Project 2 goes here.",
+    startDate: { month: "May", year: "2024" },
+    endDate: { month: "Aug", year: "2024" },
+    skills: ["C", "TCP Networking", "Caching Algorithm Design"],
+    link: "https://github.com/JaeMinBird/VirtualDiskSystem",
+  },
+  {
+    title: "Student Organization Website",
+    description: "Built parallax website with React, Bootstrap, HTML, CSS, Javascript, and jQuery. Created sign-up form with Node.js and Express.js. Stored form data in MongoDB database synced with Google Cloud API for data analytics. Deployed site with Nginx onto a virtual Ubuntu Server hosted on DigitalOcean.",
+    startDate: { month: "Aug", year: "2023" },
+    endDate: { month: "May", year: "2024" },
+    skills: ["Node.js", "Express.js", "MongoDB", "Nginx", "Google Cloud API"],
+    link: "https://psuasa.com", // Replace with actual project links
+  },
+];
