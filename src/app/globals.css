@@ -67,6 +67,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 70%; /* Full-width container */
+    margin: 0 auto; /* Add this line to center the timeline */
   }
 
   .timeline-date {

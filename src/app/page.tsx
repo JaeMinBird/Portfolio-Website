@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { experiences } from "../app/data/experience";
 import { projects } from "../app/data/projects";
 
@@ -41,18 +41,16 @@ export default function Home() {
       style={{ fontFamily: "Palatino, serif" }}
     >
       {/* Profile Section */}
-      <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center overflow-y-auto">
+      <div className="bg-[#08090A] text-white p-6 flex flex-col items-center justify-center overflow-y-auto text-center">
         <div className="w-32 h-32 rounded-full bg-[#575A5E] mb-4"></div>
         <h1 className="text-3xl font-bold mb-2">JaeMin Birdsall</h1>
         <p className="text-lg text-center mb-4">Computer Science Dropout</p>
         <div className="flex space-x-4">
           <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
+            href="mailto:jaeminbirdsall@gmail.com"
+            aria-label="Email"
           >
-            <FaTwitter className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
+            <FaEnvelope className="w-6 h-6 text-[#F4F7F5] hover:text-[#575A5E] transition" />
           </a>
           <a
             href="https://github.com/JaeMinBird"
@@ -142,7 +140,7 @@ export default function Home() {
                   </div>
 
                   {/* Content */}
-                  <div className="content flex-1 w-full p-4">
+                  <div className="content flex-1 w-full p-4 text-center sm:text-left">
                     <div>
                       <span className="text-xl font-bold">{exp.company}</span>
                       <span className="block text-lg text-gray-600">{exp.position}</span>
@@ -150,7 +148,7 @@ export default function Home() {
                     <div className="text-gray-700 mt-2 text-sm">
                       {exp.description}
                     </div>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
                       {exp.skills.map((skill, idx) => (
                         <span
                           key={idx}
@@ -199,7 +197,7 @@ export default function Home() {
                   </div>
 
                   {/* Content */}
-                  <div className="relative w-full p-4 group-hover:scale-105 transition-transform duration-300">
+                  <div className="relative w-full p-4 text-center sm:text-left group-hover:scale-105 transition-transform duration-300">
                     <div className="absolute inset-0 border border-[#08090A] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
                     <div className="relative">
                       <span className="text-xl font-bold inline-block relative">
@@ -210,7 +208,7 @@ export default function Home() {
                     <div className="text-gray-700 mt-2 text-sm">
                       {project.description}
                     </div>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
                       {project.skills.map((skill, idx) => (
                         <span
                           key={idx}
